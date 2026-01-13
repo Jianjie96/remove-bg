@@ -9,7 +9,7 @@ export default function Index () {
 
   return (
     <View className='index'>
-      <Text>This is remove bg.</Text>
+      <Text>甜甜，嘻嘻😁</Text>
     </View>
   )
 }
