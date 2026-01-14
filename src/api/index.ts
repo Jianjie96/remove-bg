@@ -453,22 +453,22 @@ export class RemoveBgClient implements RemoveBgClient {
         data: params,
         success: (res) => {
           if (res.statusCode === 400) {
-            Taro.showToast({ title: "无效参数" });
+            Taro.showToast({ title: "无效参数，请联系开发者", icon: 'error' });
             return;
           }
 
           if (res.statusCode === 402) {
-            Taro.showToast({ title: "积分不足" });
+            Taro.showToast({ title: "积分不足，请联系开发者", icon: 'error' });
             return;
           }
 
           if (res.statusCode === 403) {
-            Taro.showToast({ title: "权限验证失败" });
+            Taro.showToast({ title: "权限验证失败，请联系开发者", icon: 'error' });
             return;
           }
 
           if (res.statusCode === 429) {
-            Taro.showToast({ title: "超过速率限制" });
+            Taro.showToast({ title: "操作频繁，超过速率限制", icon: 'error' });
           }
           resolve(res.data);
         },
@@ -486,12 +486,12 @@ export class RemoveBgClient implements RemoveBgClient {
         },
         success: (res) => {
           if (res.statusCode === 403) {
-            Taro.showToast({ title: "权限验证失败" });
+            Taro.showToast({ title: "权限验证失败，请联系开发者", icon: 'error' });
             return;
           }
 
           if (res.statusCode === 429) {
-            Taro.showToast({ title: "超过速率限制" });
+            Taro.showToast({ title: "操作频繁，超过速率限制", icon: 'error' });
           }
           resolve(res.data);
         },
