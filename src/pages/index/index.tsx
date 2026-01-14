@@ -1,10 +1,13 @@
 import { View, Text } from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
+import { RemoveBgClient } from '@/api';
 import './index.scss'
+
+const RemoveBgClientInstance = new RemoveBgClient();
 
 export default function Index () {
   useLoad(() => {
-    console.log('Page loaded.', TARO_APP_SECRET_KEY)
+    RemoveBgClientInstance.getAccount();
   })
 
   return (
