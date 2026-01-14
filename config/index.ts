@@ -21,6 +21,7 @@ export default defineConfig<'vite'>(async (merge, { command, mode }) => {
       "@tarojs/plugin-generator"
     ],
     defineConstants: {
+      TARO_APP_SECRET_KEY: JSON.stringify(process.env.TARO_APP_SECRET_KEY)
     },
     copy: {
       patterns: [
