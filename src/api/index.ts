@@ -13,53 +13,53 @@ import Taro from "@tarojs/taro";
  * Size options for the output image
  */
 export type ImageSize =
-  | 'auto'      // Uses highest available resolution based on image size and credits
-  | 'preview'   // Low resolution preview
-  | 'small'     // Small size (previously called 'regular')
-  | 'regular'   // Deprecated, use 'small' instead
-  | 'medium'    // Medium size
-  | 'hd'        // HD quality
-  | '4k'        // 4K quality
-  | '50MP';     // Up to 50 megapixels (8000x6250)
+  | "auto" // Uses highest available resolution based on image size and credits
+  | "preview" // Low resolution preview
+  | "small" // Small size (previously called 'regular')
+  | "regular" // Deprecated, use 'small' instead
+  | "medium" // Medium size
+  | "hd" // HD quality
+  | "4k" // 4K quality
+  | "50MP"; // Up to 50 megapixels (8000x6250)
 
 /**
  * Image format options
  */
 export type ImageFormat =
-  | 'auto'   // PNG if transparency detected, JPG otherwise
-  | 'png'    // PNG format (supports transparency, up to 10MP)
-  | 'jpg'    // JPG format (no transparency, up to 50MP)
-  | 'webp'   // WebP format (supports transparency, up to 50MP)
-  | 'zip';   // ZIP format containing color.jpg and alpha.png (fastest, up to 50MP)
+  | "auto" // PNG if transparency detected, JPG otherwise
+  | "png" // PNG format (supports transparency, up to 10MP)
+  | "jpg" // JPG format (no transparency, up to 50MP)
+  | "webp" // WebP format (supports transparency, up to 50MP)
+  | "zip"; // ZIP format containing color.jpg and alpha.png (fastest, up to 50MP)
 
 /**
  * Type of foreground to detect
  */
 export type ForegroundType =
-  | 'auto'            // Automatic detection
-  | 'person'          // Person
-  | 'product'         // Product
-  | 'animal'          // Animal
-  | 'car'             // Car / Vehicle
-  | 'transportation'  // Transportation
-  | 'graphic'         // Graphic
-  | 'other';          // Other foreground types
+  | "auto" // Automatic detection
+  | "person" // Person
+  | "product" // Product
+  | "animal" // Animal
+  | "car" // Car / Vehicle
+  | "transportation" // Transportation
+  | "graphic" // Graphic
+  | "other"; // Other foreground types
 
 /**
  * Type level for detection confidence
  */
 export type TypeLevel =
-  | 'none'   // No type classification
-  | 'latest' // Latest classification algorithm
-  | '1'      // Version 1
-  | '2';     // Version 2
+  | "none" // No type classification
+  | "latest" // Latest classification algorithm
+  | "1" // Version 1
+  | "2"; // Version 2
 
 /**
  * Output channels
  */
 export type Channels =
-  | 'rgba'   // Full RGBA image (default, recommended)
-  | 'alpha'; // Alpha mask only
+  | "rgba" // Full RGBA image (default, recommended)
+  | "alpha"; // Alpha mask only
 
 /**
  * Region of Interest format: "x1 y1 x2 y2"
@@ -72,17 +72,17 @@ export type ROI = string;
  * Position values for image placement
  */
 export type Position =
-  | 'original'  // Keep original position
-  | 'center'    // Center the subject
-  | string;     // Custom position "horizontal vertical" (e.g., "50% 50%")
+  | "original" // Keep original position
+  | "center" // Center the subject
+  | string; // Custom position "horizontal vertical" (e.g., "50% 50%")
 
 /**
  * Shadow type options
  */
 export type ShadowType =
-  | 'none'     // No shadow
-  | 'drop'     // Drop shadow effect
-  | 'natural'; // Natural shadow
+  | "none" // No shadow
+  | "drop" // Drop shadow effect
+  | "natural"; // Natural shadow
 
 /**
  * Base parameters for background removal
@@ -140,7 +140,8 @@ export interface RemoveBackgroundBaseParams {
 /**
  * Parameters for removing background from image file upload
  */
-export interface RemoveBackgroundFromFileParams extends RemoveBackgroundBaseParams {
+export interface RemoveBackgroundFromFileParams
+  extends RemoveBackgroundBaseParams {
   /** Image file to upload (File, Blob, or Buffer) */
   image_file: File | Blob | Buffer;
 }
@@ -148,7 +149,8 @@ export interface RemoveBackgroundFromFileParams extends RemoveBackgroundBasePara
 /**
  * Parameters for removing background from image URL
  */
-export interface RemoveBackgroundFromUrlParams extends RemoveBackgroundBaseParams {
+export interface RemoveBackgroundFromUrlParams
+  extends RemoveBackgroundBaseParams {
   /** URL of the image to process */
   image_url: string;
 }
@@ -156,7 +158,8 @@ export interface RemoveBackgroundFromUrlParams extends RemoveBackgroundBaseParam
 /**
  * Parameters for removing background from base64 encoded image
  */
-export interface RemoveBackgroundFromBase64Params extends RemoveBackgroundBaseParams {
+export interface RemoveBackgroundFromBase64Params
+  extends RemoveBackgroundBaseParams {
   /** Base64 encoded image data */
   image_file_b64: string;
 }
@@ -176,7 +179,14 @@ export type RemoveBackgroundParams =
 /**
  * Detected foreground type in response
  */
-export type DetectedType = 'person' | 'product' | 'animal' | 'car' | 'transportation' | 'graphic' | 'other';
+export type DetectedType =
+  | "person"
+  | "product"
+  | "animal"
+  | "car"
+  | "transportation"
+  | "graphic"
+  | "other";
 
 /**
  * Credits information
@@ -219,6 +229,7 @@ export interface AccountInfo {
       enterprise?: number;
     };
   };
+  errors: [{ title: string }];
 }
 
 /**
@@ -287,15 +298,15 @@ export interface RemoveBackgroundResult {
  * API error code types
  */
 export type ErrorCode =
-  | 'missing_api_key'
-  | 'invalid_api_key'
-  | 'insufficient_credits'
-  | 'rate_limit_exceeded'
-  | 'invalid_image'
-  | 'invalid_parameters'
-  | 'file_size_exceeded'
-  | 'resolution_exceeded'
-  | 'internal_error';
+  | "missing_api_key"
+  | "invalid_api_key"
+  | "insufficient_credits"
+  | "rate_limit_exceeded"
+  | "invalid_image"
+  | "invalid_parameters"
+  | "file_size_exceeded"
+  | "resolution_exceeded"
+  | "internal_error";
 
 /**
  * Individual error object
@@ -328,7 +339,7 @@ export interface RemoveBackgroundErrorResponse {
  */
 export interface RequestHeaders {
   /** API key for authentication */
-  'X-Api-Key': string;
+  "X-Api-Key": string;
 
   /** Optional custom headers */
   [key: string]: string;
@@ -339,40 +350,40 @@ export interface RequestHeaders {
  */
 export interface ResponseHeaders {
   /** Detected foreground type */
-  'X-Type': DetectedType;
+  "X-Type": DetectedType;
 
   /** Width of result image */
-  'X-Width': string;
+  "X-Width": string;
 
   /** Height of result image */
-  'X-Height': string;
+  "X-Height": string;
 
   /** Credits charged for this request */
-  'X-Credits-Charged': string;
+  "X-Credits-Charged": string;
 
   /** Total rate limit per minute */
-  'X-RateLimit-Limit': string;
+  "X-RateLimit-Limit": string;
 
   /** Remaining requests for this minute */
-  'X-RateLimit-Remaining': string;
+  "X-RateLimit-Remaining": string;
 
   /** Unix timestamp when rate limit resets */
-  'X-RateLimit-Reset': string;
+  "X-RateLimit-Reset": string;
 
   /** Seconds to wait before retrying (only if rate limited) */
-  'Retry-After'?: string;
+  "Retry-After"?: string;
 
   /** Foreground top position */
-  'X-Foreground-Top': string;
+  "X-Foreground-Top": string;
 
   /** Foreground left position */
-  'X-Foreground-Left': string;
+  "X-Foreground-Left": string;
 
   /** Foreground width */
-  'X-Foreground-Width': string;
+  "X-Foreground-Width": string;
 
   /** Foreground height */
-  'X-Foreground-Height': string;
+  "X-Foreground-Height": string;
 }
 
 // ============================================
@@ -400,12 +411,14 @@ export interface RemoveBgClient {
   /**
    * Remove background from an image
    */
-  removeBackground(params: RemoveBackgroundParams): Promise<Taro.request.SuccessCallbackResult<RemoveBackgroundResult>>;
+  removeBackground(
+    params: RemoveBackgroundParams
+  ): Promise<RemoveBackgroundResult>;
 
   /**
    * Get account information
    */
-  getAccount(): Promise<Taro.request.SuccessCallbackResult<AccountInfo>>;
+  getAccount(): Promise<AccountInfo>;
 }
 
 // ============================================
@@ -423,34 +436,67 @@ export interface SaveOptions {
 /**
  * Full parameters with save option
  */
-export type RemoveBackgroundParamsWithSave = RemoveBackgroundParams & SaveOptions;
+export type RemoveBackgroundParamsWithSave = RemoveBackgroundParams &
+  SaveOptions;
 
 export class RemoveBgClient implements RemoveBgClient {
-  removeBackground(params: RemoveBackgroundParams): Promise<Taro.request.SuccessCallbackResult<RemoveBackgroundResult>> {
+  removeBackground(
+    params: RemoveBackgroundParams
+  ): Promise<RemoveBackgroundResult> {
     return new Promise((resolve, reject) => {
       Taro.request({
-        url: 'https://api.remove.bg/v1.0/removebg',
+        url: "https://api.remove.bg/v1.0/removebg",
         header: {
-          'X-API-Key': TARO_APP_SECRET_KEY,
-          'Content-Type': 'multipart/form-data'
+          "X-API-Key": TARO_APP_SECRET_KEY,
+          "Content-Type": "multipart/form-data",
         },
         data: params,
-        success: resolve,
-        fail: reject
-      })
-    })
+        success: (res) => {
+          if (res.statusCode === 400) {
+            Taro.showToast({ title: "无效参数" });
+            return;
+          }
+
+          if (res.statusCode === 402) {
+            Taro.showToast({ title: "积分不足" });
+            return;
+          }
+
+          if (res.statusCode === 403) {
+            Taro.showToast({ title: "权限验证失败" });
+            return;
+          }
+
+          if (res.statusCode === 429) {
+            Taro.showToast({ title: "超过速率限制" });
+          }
+          resolve(res.data);
+        },
+        fail: reject,
+      });
+    });
   }
 
-  getAccount(): Promise<Taro.request.SuccessCallbackResult<AccountInfo>> {
+  getAccount(): Promise<AccountInfo> {
     return new Promise((resolve, reject) => {
       Taro.request({
-        url: 'https://api.remove.bg/v1.0/account',
+        url: "https://api.remove.bg/v1.0/account",
         header: {
-          'X-API-Key': TARO_APP_SECRET_KEY
+          "X-API-Key": TARO_APP_SECRET_KEY,
         },
-        success: resolve,
-        fail: reject
-      })
-    })
+        success: (res) => {
+          if (res.statusCode === 403) {
+            Taro.showToast({ title: "权限验证失败" });
+            return;
+          }
+
+          if (res.statusCode === 429) {
+            Taro.showToast({ title: "超过速率限制" });
+          }
+          resolve(res.data);
+        },
+        fail: reject,
+      });
+    });
   }
 }
