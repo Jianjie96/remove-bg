@@ -11,5 +11,10 @@
     "postcss": false,
     "minified": false
   },
-  "compileType": "miniprogram"
+  "compileType": "miniprogram",
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "需要您的授权才能保存图片到相册"
+    }
+  }
 }
